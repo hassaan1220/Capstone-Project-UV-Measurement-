@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>My UV Condition - Landing Page</title>
+  <!-- Bootstrap CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- css file link -->
+   <link rel="stylesheet" href="/css/index.css">
+</head>
+
+<body>
+  <h1>Welcome to My UV Condition</h1>
+  <p class="lead">Check the UV index before leaving to stay safe</p>
+
+  <!-- Form -->
+  <form action="/uv" method="POST" class="form-card">
+    <div class="row g-3">
+      <div class="col-md-6">
+        <label for="city" class="form-label">City</label>
+        <input type="text" class="form-control" id="city" name="city" placeholder="e.g. Karachi" required>
+      </div>
+
+      <div class="col-md-6">
+        <label for="country" class="form-label">Country</label>
+        <input type="text" class="form-control" id="country" name="country" placeholder="e.g. PK" required>
+      </div>
+
+      <div class="col-12">
+        <label for="datetime" class="form-label">Date & Time</label>
+        <input type="datetime-local" class="form-control" id="datetime" name="datetime" required>
+      </div>
+
+      <div class="col-12 mt-3">
+        <button type="submit" class="btn btn-custom w-100">Check UV Forecast</button>
+      </div>
+    </div>
+  </form>
+
+  <!-- Result -->
+  <% if (uvResponse) { %>
+    <div class="result-card">
+      <h4 class="mb-3 text-primary">UV Forecast Result</h4>
+      <p><strong>UV:</strong> <%= uvResponse.result.uv %></p>
+      <p><strong>UV Time:</strong> <%= uvResponse.result.uv_time %></p>
+      <p><strong>UV Max:</strong> <%= uvResponse.result.uv_max %></p>
+      <p><strong>UV Max Time:</strong> <%= uvResponse.result.uv_max_time %></p>
+      <p><strong>Ozone:</strong> <%= uvResponse.result.ozone %></p>
+      <p><strong>Ozone Time:</strong> <%= uvResponse.result.ozone_time %></p>
+    </div>
+  <% } else if (error) { %>
+    <div class="alert alert-danger mt-4">
+      <%= error %>
+    </div>
+  <% } %>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
