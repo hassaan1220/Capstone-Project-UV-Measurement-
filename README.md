@@ -1,3 +1,4 @@
+Capstone project: My UV condition 
 My UV Condition is a web application that allows users to measure and forecast UV index levels before heading outdoors. The app helps you make safer decisions by checking the UV forecast for your city at any date and time.
 
 Features:
