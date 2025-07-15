@@ -2,6 +2,7 @@ import axios from 'axios';
 import bodyParser from 'body-parser';
 import express from 'express';
 const app = express();
+const PORT = process.env.PORT || 3000;
 
 // My API keys
 const openweathermap_key = "f28fdd9f87b8285ffab426678c232268";
@@ -41,6 +42,7 @@ app.post('/uv', async (req, res) => {
     }
 });
 
-app.listen(3000, () => {
-    console.log("Server running on http://localhost:3000");
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
+
